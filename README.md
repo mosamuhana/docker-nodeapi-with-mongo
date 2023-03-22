@@ -19,7 +19,7 @@ $ npm run build
 $ docker compose up -d
 ```
 
-## Edpoint:
+## Endpoints:
 - http://localhost:8000
 - http://localhost:8000/api/auth/register
 - http://localhost:8000/api/auth/login
