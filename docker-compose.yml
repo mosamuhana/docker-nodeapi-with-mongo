@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  nodeapi:
+    container_name: nodeapi
+    image: nodeapi-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PORT: 8000
+    restart: always
+    environment:
+      NODE_ENV: development
+      JWT_SECRET: my-secret
+      MONGO_URI: mongodb://nodeapi-db:27017/nodeapi-db
+    ports:
+      - '8000:8000'
+    depends_on:
+      - nodeapi-db
+
+  nodeapi-db:
+    container_name: nodeapi-db
+    image: mongo:latest
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - nodeapi-data:/data/db
+    #environment:
+    #  MONGO_INITDB_ROOT_USERNAME: root
+    #  MONGO_INITDB_ROOT_PASSWORD: secret
+
+volumes:
+  nodeapi-data:
