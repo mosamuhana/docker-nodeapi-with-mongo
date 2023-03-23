@@ -1,10 +1,10 @@
 import express from "express";
 import type { Express, Request, Response } from "express";
 import { connect } from "mongoose";
-import { PORT, MONGO_URI } from "./constants";
+import { PORT, MONGO_URI, NODE_ENV } from "./constants";
 import { authRouter } from "./routes/auth.router";
 
-const connectDB = async () => {
+async function connectDB() {
   try {
     await connect(MONGO_URI);
     console.log("MongoDB connected successfull.");
@@ -12,7 +12,7 @@ const connectDB = async () => {
     //console.error('Error:', error);
     throw error;
   }
-};
+}
 
 async function main() {
   await connectDB();
@@ -23,11 +23,11 @@ async function main() {
   app.use("/api/auth", authRouter);
 
   app.get("/", async (req: Request, res: Response) => {
-    res.send("API in docker container");
+    res.send("API in docker container.");
   });
 
   app.listen(PORT, () => {
-    console.log(`Server listening at http://localhost:${PORT}`);
+    console.log(`[${NODE_ENV}] Server listening at http://localhost:${PORT}`);
   });
 }
 

@@ -3,9 +3,3 @@ npm-debug.log
 .DS_Store
 .git
 .gitignore
-README.md
-LICENSE
-.editorconfig
-package-lock.json
-tsconfig.json
-src

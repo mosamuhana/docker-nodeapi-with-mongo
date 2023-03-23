@@ -3,15 +3,15 @@ version: "3.9"
 services:
   nodeapi:
     container_name: nodeapi
-    image: nodeapi-image
+    image: nodeapi-image:dev
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       args:
         PORT: 8000
     restart: always
     environment:
-      NODE_ENV: production
+      NODE_ENV: development
       JWT_SECRET: my-secret
       MONGO_URI: mongodb://nodeapi-db:27017/nodeapi-db
     ports:

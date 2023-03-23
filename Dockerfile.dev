@@ -1,0 +1,12 @@
+FROM node:lts-alpine
+
+ARG PORT
+ENV PORT ${PORT:-8000}
+
+WORKDIR /app
+
+#COPY . .
+
+EXPOSE $PORT
+
+CMD ["npm","run", "dev"]

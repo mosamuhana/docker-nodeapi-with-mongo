@@ -14,9 +14,22 @@ $ npm install
 $ npm run build
 ```
 
-- Run
+- Start
 ```sh
 $ docker compose up -d
+```
+
+- Stop
+```sh
+$ docker compose down -v
+```
+
+## Usage (in development)
+```sh
+# Start containers
+$ docker compose -f docker-compose.dev.yml up -d
+# Stop all
+$ docker compose -f docker-compose.dev.yml down -v
 ```
 
 ## Endpoints:
